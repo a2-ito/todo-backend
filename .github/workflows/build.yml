@@ -55,4 +55,5 @@ jobs:
 
       - name: tbls
         run: |
-          git add docs/swagger.yaml && git commit -m 'auto commit' && git push
+          mv docs/swagger.yaml swagger/
+          git add swagger/swagger.yaml && git commit -m 'auto commit' && git push
