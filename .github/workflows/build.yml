@@ -40,8 +40,11 @@ jobs:
       - name: Go Unit Test
         run: go test -v -cover -covermode=atomic ./...
 
-      - name: Go Build
-        run: make
+      - name: install swag
+        run: go install github.com/swaggo/swag/cmd/swag@latest
+
+      - name: Go Unit Test
+        run: swag init
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
