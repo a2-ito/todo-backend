@@ -1,0 +1,48 @@
+name: Build Workflow
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> ${GITHUB_ENV}
+
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BRANCH }}
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.50.1
+
+      - name: Install dependencies
+        run: go get .
+
+      - name: Go Build
+        run: go build -v ./...
+
+      - name: Go Unit Test
+        run: go test -v -cover -covermode=atomic ./...
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
