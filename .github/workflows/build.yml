@@ -53,3 +53,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/
 
+      - name: tbls
+        run: |
+          git add docs/swagger.yaml && git commit -m 'auto commit' && git push
