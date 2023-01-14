@@ -10,7 +10,7 @@ jobs:
 
     permissions:
       id-token: write
-      contents: wirte
+      contents: read
 
     steps:
       - name: Extract branch name
