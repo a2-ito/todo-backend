@@ -53,7 +53,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/
 
-      - name: tbls
+      - name: Deploy Swagger Specifications if diffs exist
         run: |
           rm .gitignore
           git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}

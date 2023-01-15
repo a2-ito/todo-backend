@@ -41,6 +41,17 @@ func (usecase *userUseCase) Hello(ctx context.Context) {
 	usecase.UserRepository.Hello()
 }
 
+// ShowAccount  godoc
+// @Summary     ログイン済みユーザ情報取得
+// @Description ログイン済みユーザ情報を返却します。パスにユーザIDを指定することはできず、トークンに含まれるユーザIDを利用してユーザ情報を取得します。これによってログイン済みかどうかが判断できるようになります。
+// @Tags        user
+// @Accept      json
+// @Produce     json
+// @Success     200 {object} model.User
+// @Failure     401 {object} common.HTTPError
+// @Failure     402 {object} common.HTTPError
+// @Failure     500 {object} common.HTTPError
+// @Router      /api/users/:id [get]
 func (usecase *userUseCase) GetUser(ctx context.Context, id uuid.UUID) (*model.User, error) {
 	fmt.Println("UseCase FindById ", id)
 	return usecase.UserRepository.FindById(id)

@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	echoSwagger "github.com/swaggo/echo-swagger"
 
 	"github.com/a2-ito/todo-backend/presenter/handler"
 )
@@ -15,6 +16,8 @@ func SetRouter(e *echo.Echo, h handler.AppHandler) {
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	r := e.Group("/api")
 	r.GET("", h.Hello)

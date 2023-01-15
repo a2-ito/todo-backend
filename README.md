@@ -3,6 +3,7 @@
 ## Todo
 
 - [x] tasks on memory
+- [ ] 差分がある場合のみ swag init を実行する
 - [ ] .env configuration
 - [ ] Build as a Container via buildpacks
 - [ ] Build as a container image
