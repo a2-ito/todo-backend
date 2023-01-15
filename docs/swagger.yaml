@@ -1,0 +1,56 @@
+basePath: /
+definitions:
+  common.HTTPError:
+    properties:
+      message:
+        type: string
+    type: object
+  model.User:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: Todo 内部 API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Todo API
+  version: "0.1"
+paths:
+  /api/users/:id:
+    get:
+      consumes:
+      - application/json
+      description: ログイン済みユーザ情報を返却します。パスにユーザIDを指定することはできず、トークンに含まれるユーザIDを利用してユーザ情報を取得します。これによってログイン済みかどうかが判断できるようになります。
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.User'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/common.HTTPError'
+        "402":
+          description: Payment Required
+          schema:
+            $ref: '#/definitions/common.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/common.HTTPError'
+      summary: ログイン済みユーザ情報取得
+      tags:
+      - user
+swagger: "2.0"
