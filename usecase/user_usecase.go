@@ -42,7 +42,7 @@ func (usecase *userUseCase) Hello(ctx context.Context) {
 }
 
 // ShowAccount  godoc
-// @Summary     ログイン済みユーザ情報取得
+// @Summary     ユーザ情報取得
 // @Description ログイン済みユーザ情報を返却します。パスにユーザIDを指定することはできず、トークンに含まれるユーザIDを利用してユーザ情報を取得します。これによってログイン済みかどうかが判断できるようになります。
 // @Tags        user
 // @Accept      json

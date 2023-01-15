@@ -60,7 +60,7 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           if (git diff --shortstat | grep '[0-9]'); then \
-            git add docs/swagger.*
+            git add docs/docs.go docs/swagger.*
             git commit -m "GitHub Actions から差分を Push"; \
             git push origin HEAD:${GITHUB_REF}; \
           fi

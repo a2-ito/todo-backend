@@ -1,4 +1,5 @@
 main
 tmp/
+docs/docs.go
 docs/swagger*
 .secrets
