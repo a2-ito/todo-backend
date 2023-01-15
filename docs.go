@@ -37,7 +37,7 @@ const docTemplate = `{
                 "tags": [
                     "user"
                 ],
-                "summary": "ログイン済みユーザ情報取得",
+                "summary": "ユーザ情報取得",
                 "responses": {
                     "200": {
                         "description": "OK",
